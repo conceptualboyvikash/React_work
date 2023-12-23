@@ -7,6 +7,18 @@ export default function Textform(props) {
         setText(event.target.value);
         
     }
+    const handleclick1=(event)=>{
+        // console.log("onclick on");
+        fsetText(event.target.value);
+    }
+    
+
+    const handleclick2=(event)=>{
+        // console.log("onclick on");
+        rsetText(event.target.value);
+    }
+        
+  
     const handleUpClick=(event)=>{
         const newtext=text.toUpperCase();
         setText(newtext);
@@ -17,7 +29,21 @@ export default function Textform(props) {
         setText(newtext);
       
     }
+    const clearText=(event)=>{
+        const newtext=('');
+        setText(newtext);
+      
+    }
+    const ReplaceText=(event)=>{
+        const newtext=text.replaceAll(ftext,rtext);
+        setText(newtext);
+      
+    }
+    
     const [text, setText]=useState('');
+    const [ftext, fsetText]=useState('');
+    const [rtext, rsetText]=useState('');
+    
     // text="conceput_clear" //wrong way 
     // setText("coneptu_clar") //correct way
   return (
@@ -29,6 +55,14 @@ export default function Textform(props) {
         </div>
         <button className="btn btn-primary" onClick={handleUpClick}>Convert to UpperCase</button>
         <button className="btn btn-primary mx-2" onClick={handleDownClick}>Convert to LowerCase</button>
+        <button className="btn btn-primary mx-2" onClick={clearText}>ClearText</button>
+
+
+        <button className="btn btn-primary mx-2 my-2" onClick={ReplaceText}>ReplaceAllText</button>
+        <input className="mx-1" type="text"  value={ftext} onChange={handleclick1} size="10"/>
+        <input className="mx-1" type="text"  value={rtext} onChange={handleclick2} size="10" />
+
+       
     </div>
     <div className="container my-4">
       <h2>Text Summary</h2>
