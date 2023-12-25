@@ -3,16 +3,16 @@ import React, { useState } from "react";
 export default function Textform(props) {
  // console.log(props.mode);
   const handleclick = (event) => {
-    // console.log("onclick on");
+    // console.log("onClick on");
     setText(event.target.value);
   };
   const handleclick1 = (event) => {
-    // console.log("onclick on");
+    // console.log("onClick on");
     fsetText(event.target.value);
   };
 
   const handleclick2 = (event) => {
-    // console.log("onclick on");
+    // console.log("onClick on");
     rsetText(event.target.value);
   };
 
@@ -81,23 +81,23 @@ export default function Textform(props) {
             placeholder="Enter your text here"
           ></textarea>
         </div>
-        <button className="btn btn-primary" onClick={handleUpClick}>
+        <button style={{backgroundColor:props.color}} className="btn btn-primary" onClick={handleUpClick}>
           Convert to UpperCase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleDownClick}>
+        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2" onClick={handleDownClick}>
           Convert to LowerCase
         </button>
-        <button className="btn btn-primary mx-2" onClick={clearText}>
+        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2" onClick={clearText}>
           ClearText
         </button>
-        <button className="btn btn-primary mx-2" onClick={copyText}>
+        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2" onClick={copyText}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={RemoveExtraSpace}>
+        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2" onClick={RemoveExtraSpace}>
           Remove Extra Space
         </button>
 
-        <button className="btn btn-primary mx-2 my-2" onClick={ReplaceText}>
+        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2 my-2" onClick={ReplaceText}>
           ReplaceAllText
         </button>
         <input
@@ -120,9 +120,11 @@ export default function Textform(props) {
             }}>
         <h2>Text Summary</h2>
         <p>
-          {text.split(" ").length} words and {text.length}
+          
+          {(text.split(" ")[text.split(" ").length-1]==="") ?text.split(" ").length-1:text.split(" ").length} words and {text.length}
+         
         </p>
-        <p>{0.008 * text.split(" ").length} time take to read</p>
+        <p>{0.008 * ((text.split(" ")[text.split(" ").length-1]==="") ?text.split(" ").length-1:text.split(" ").length)} time take to read</p>
         <h2>preview</h2>
         <p>{text}</p>
       </div>
