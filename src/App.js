@@ -1,4 +1,5 @@
 // import Accord from './Accord';
+import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -22,7 +23,7 @@ function App() {
   
   let colorset=(col)=>{
     //document.body.style.backgroundColor=col;
-    if(mode=='light')
+    if(mode==='light')
         return;
     setColor(col);
     togglemode("cwala")
@@ -37,7 +38,7 @@ function App() {
       setMode('dark');
       console.log("hellwo");
       document.body.style.backgroundColor=color;
-      if(word!="cwala")
+      if(word!=="cwala")
       {
           showAlert("Dark mode has been enable","success");
           document.title="Text-magic:Dark Mode ON!";
@@ -69,9 +70,15 @@ function App() {
     
        {/* <Accord/> */}
        {/* <Accord/> */}
-       <div className='container'>
-       <Textform mode={mode} showAlert={showAlert} color={color}/>
-       </div>
+      
+    
+  
+          
+         <div className="container">
+          <Textform mode={mode} showAlert={showAlert} color={color}/></div>
+         
+         
+       
  
       
     </>
