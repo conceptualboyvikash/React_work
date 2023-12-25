@@ -73,7 +73,8 @@ export default function Textform(props) {
             onChange={handleclick}
             rows="8"
             style={{
-              backgroundColor:(props.mode === "dark")? "#2e427bba" : "white",
+              //backgroundColor:(props.mode === "dark")? "#2e427bba" : "white",
+              backgroundColor:(props.color),
               color:(props.mode === "light")? "#2e427bba" : "white",
                
             }}

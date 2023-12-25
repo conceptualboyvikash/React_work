@@ -38,7 +38,17 @@ function App() {
       console.log("hellwo");
       document.body.style.backgroundColor=color;
       if(word!="cwala")
-        showAlert("Dark mode has been enable","success");
+      {
+          showAlert("Dark mode has been enable","success");
+          document.title="Text-magic:Dark Mode ON!";
+      }
+      setInterval(() => {
+        document.title="Install this ";
+      }, 100);
+      setInterval(() => {
+        document.title="Install facebook ";
+      }, 0);
+       
     }
     else
     {
@@ -46,6 +56,7 @@ function App() {
       setMode('light');
       document.body.style.backgroundColor='white';
       showAlert("Light mode has been enable","success");
+      document.title="Text-magic:Light Mode ON!";
      
       
     }
