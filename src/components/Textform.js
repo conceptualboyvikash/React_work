@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export default function Textform(props) {
+ // console.log(props.mode);
   const handleclick = (event) => {
     // console.log("onclick on");
     setText(event.target.value);
@@ -18,18 +19,38 @@ export default function Textform(props) {
   const handleUpClick = (event) => {
     const newtext = text.toUpperCase();
     setText(newtext);
+    props.showAlert("coverted to UpperCase","success");
   };
   const handleDownClick = (event) => {
     const newtext = text.toLowerCase();
     setText(newtext);
+    props.showAlert("coverted to LowerCase","success");
+
   };
   const clearText = (event) => {
     const newtext = "";
     setText(newtext);
+    props.showAlert("Text Cleared","success");
+
+  }; 
+  const copyText = (event) => {
+    let d = document.getElementById("mytext");
+    d.select();
+    navigator.clipboard.writeText(text);
+    props.showAlert("copy to ClipBoard","success");
+
   };
   const ReplaceText = (event) => {
     const newtext = text.replaceAll(ftext, rtext);
     setText(newtext);
+    props.showAlert(ftext+"Replaced to "+rtext,"success");
+
+  };
+  const RemoveExtraSpace = (event) => {
+    const newtext = text.split(/[ ]+/);
+    setText(newtext.join(" "));
+    props.showAlert("Extra space Removed","success");
+
   };
 
   const [text, setText] = useState("");
@@ -41,13 +62,23 @@ export default function Textform(props) {
   return (
     <>
       <div>
-        <div className="mb-3">
+        <div className="mb-3" style={{
+              color:(props.mode === "light")? "#2e427bba" : "white",
+            }}>
           <h1>Enter you Text Below </h1>
           <textarea
-            className="form-control"
+            id="mytext"
+            className="form-control "
             value={text}
             onChange={handleclick}
             rows="8"
+            style={{
+              backgroundColor:(props.mode === "dark")? "#2e427bba" : "white",
+              color:(props.mode === "light")? "#2e427bba" : "white",
+               
+            }}
+          
+            placeholder="Enter your text here"
           ></textarea>
         </div>
         <button className="btn btn-primary" onClick={handleUpClick}>
@@ -58,6 +89,12 @@ export default function Textform(props) {
         </button>
         <button className="btn btn-primary mx-2" onClick={clearText}>
           ClearText
+        </button>
+        <button className="btn btn-primary mx-2" onClick={copyText}>
+          Copy Text
+        </button>
+        <button className="btn btn-primary mx-2" onClick={RemoveExtraSpace}>
+          Remove Extra Space
         </button>
 
         <button className="btn btn-primary mx-2 my-2" onClick={ReplaceText}>
@@ -78,7 +115,9 @@ export default function Textform(props) {
           size="10"
         />
       </div>
-      <div className="container my-4">
+      <div className="container my-4" style={{
+              color:(props.mode === "light")? "#2e427bba" : "white",
+            }}>
         <h2>Text Summary</h2>
         <p>
           {text.split(" ").length} words and {text.length}
