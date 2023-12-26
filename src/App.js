@@ -83,11 +83,11 @@ function App() {
           
          <div className="container">
          <Routes>
-          <Route path="/Accord" element={ <Accord/>}>
+          <Route path="/React_work/Accord" element={ <Accord/>}>
            
           </Route>
          
-          <Route path="/" element={<Textform mode={mode} showAlert={showAlert} color={color}/>}>
+          <Route path="/React_work/" element={<Textform mode={mode} showAlert={showAlert} color={color}/>}>
           
           </Route>
         </Routes>
