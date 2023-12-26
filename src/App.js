@@ -1,11 +1,16 @@
-// import Accord from './Accord';
+import Accord from './Accord';
 import React from 'react';
 import { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import Alert from './Alert';
-
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  
+} from "react-router-dom";
 
 function App() {
   const[mode, setMode]=useState('light');
@@ -55,15 +60,17 @@ function App() {
     {
       
       setMode('light');
+      
       document.body.style.backgroundColor='white';
       showAlert("Light mode has been enable","success");
       document.title="Text-magic:Light Mode ON!";
-     
+      setColor("#9dbfbf");
       
     }
   }
   return (
     <>
+  <Router>
    <Navbar  title="Text-Magic" about="mobile no" mode={mode} toggleMode={togglemode} colorset={colorset}/>
     <Alert  alert={alert} />
     {/* <Navbar /> */}
@@ -75,12 +82,22 @@ function App() {
   
           
          <div className="container">
-          <Textform mode={mode} showAlert={showAlert} color={color}/></div>
+         <Routes>
+          <Route path="/Accord" element={ <Accord/>}>
+           
+          </Route>
+         
+          <Route path="/" element={<Textform mode={mode} showAlert={showAlert} color={color}/>}>
+          
+          </Route>
+        </Routes>
+         
+          </div>
          
          
        
  
-      
+      </Router>
     </>
   );
 }

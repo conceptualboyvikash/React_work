@@ -106,6 +106,7 @@ export default function Textform(props) {
           type="text"
           value={ftext}
           onChange={handleclick1}
+          placeholder="From"
           size="10"
         />
         <input
@@ -114,6 +115,7 @@ export default function Textform(props) {
           value={rtext}
           onChange={handleclick2}
           size="10"
+          placeholder="To"
         />
       </div>
       <div className="container my-4" style={{
