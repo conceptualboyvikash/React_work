@@ -34,8 +34,7 @@ export default function Textform(props) {
 
   }; 
   const copyText = (event) => {
-    let d = document.getElementById("mytext");
-    d.select();
+   
     navigator.clipboard.writeText(text);
     props.showAlert("copy to ClipBoard","success");
 
@@ -126,10 +125,10 @@ export default function Textform(props) {
         <h2>Text Summary</h2>
         <p>
           
-          {(text.split(" ").filter((word)=>{return word.length!==0}).length)} words and {text.length}
+          {(text.split(/\s+/).filter((word)=>{return word.length!==0}).length)} words and {text.length}
          
         </p>
-        <p>{0.008 * (text.split(" ").filter((word)=>{return word.length!==0}).length)} time take to read</p>
+        <p>{0.008 * (text.split(/\s+/).filter((word)=>{return word.length!==0}).length)} time take to read</p>
         <h2>preview</h2>
         <p>{text}</p>
       </div>
