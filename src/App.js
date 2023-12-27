@@ -15,7 +15,7 @@ import {
 function App() {
   const[mode, setMode]=useState('light');
   const[alert, setAlert]=useState(null);
-  const[color, setColor]=useState('#2e427bba');
+  const[color, setColor]=useState('white');
   let showAlert=(msg,type)=>{
     setAlert({
       msg:msg,
@@ -31,31 +31,40 @@ function App() {
     if(mode==='light')
         return;
     setColor(col);
+  //  console.log("my color is "+color);
     togglemode("cwala")
   //  console.log("funciton is calling");
     //console.log(col);
   }
  
-  let togglemode=(word="hellow")=>{
+  let togglemode=(word="Hellow")=>{
    // console.log(mode);
-    if(mode==='light' || word==="cwala")
+    if(word==="cwala")
+    {
+    //  console.log("my color is "+color);
+      document.body.style.backgroundColor=color;
+    }
+    else  if(mode==='light'  )
     {
       setMode('dark');
-      console.log("hellwo");
+      
+     // console.log("my updated color is "+ color);
+     setColor('#60a0ab')
       document.body.style.backgroundColor=color;
       if(word!=="cwala")
       {
           showAlert("Dark mode has been enable","success");
-          document.title="Text-magic:Dark Mode ON!";
+          //document.title="Text-magic:Dark Mode ON!";
       }
-      setInterval(() => {
-        document.title="Install this ";
-      }, 100);
-      setInterval(() => {
-        document.title="Install facebook ";
-      }, 0);
+      // setInterval(() => {
+      //   document.title="Install this ";
+      // }, 100);
+      // setInterval(() => {
+      //   document.title="Install facebook ";
+      // }, 0);
        
     }
+    
     else
     {
       
@@ -63,11 +72,13 @@ function App() {
       
       document.body.style.backgroundColor='white';
       showAlert("Light mode has been enable","success");
-      document.title="Text-magic:Light Mode ON!";
-      setColor("#9dbfbf");
+     // document.title="Text-magic:Light Mode ON!";
+      setColor("white");
       
     }
   }
+  
+ 
   return (
     <>
   <Router>
@@ -83,7 +94,7 @@ function App() {
           
          <div className="container">
          <Routes>
-          <Route path="/React_work/Accord" element={ <Accord/>}>
+          <Route path="/React_work/Accord" element={ <Accord color={color} mode={mode}/>}>
            
           </Route>
          

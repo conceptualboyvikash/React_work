@@ -82,23 +82,23 @@ export default function Textform(props) {
             placeholder="Enter your text here"
           ></textarea>
         </div>
-        <button style={{backgroundColor:props.color}} className="btn btn-primary" onClick={handleUpClick}>
+        <button style={{backgroundColor:props.mode==='light'?'blue':props.color}}  disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>
           Convert to UpperCase
         </button>
-        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2" onClick={handleDownClick}>
+        <button style={{backgroundColor:props.mode==='light'?'blue':props.color}} disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleDownClick}>
           Convert to LowerCase
         </button>
-        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2" onClick={clearText}>
+        <button style={{backgroundColor:props.mode==='light'?'blue':props.color}} disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={clearText}>
           ClearText
         </button>
-        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2" onClick={copyText}>
+        <button style={{backgroundColor:props.mode==='light'?'blue':props.color}} disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={copyText}>
           Copy Text
         </button>
-        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2" onClick={RemoveExtraSpace}>
+        <button style={{backgroundColor:props.mode==='light'?'blue':props.color}} disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={RemoveExtraSpace}>
           Remove Extra Space
         </button>
 
-        <button style={{backgroundColor:props.color}} className="btn btn-primary mx-2 my-2" onClick={ReplaceText}>
+        <button style={{backgroundColor:props.mode==='light'?'blue':props.color}} disabled={text.length===0} className="btn btn-primary mx-2 my-2 my-2" onClick={ReplaceText}>
           ReplaceAllText
         </button>
         <input
@@ -106,6 +106,7 @@ export default function Textform(props) {
           type="text"
           value={ftext}
           onChange={handleclick1}
+          style={{backgroundColor:props.mode==='light'?'white':props.color}}
           placeholder="From"
           size="10"
         />
@@ -114,6 +115,7 @@ export default function Textform(props) {
           type="text"
           value={rtext}
           onChange={handleclick2}
+          style={{backgroundColor:props.mode==='light'?'white':props.color}}
           size="10"
           placeholder="To"
         />
@@ -124,10 +126,10 @@ export default function Textform(props) {
         <h2>Text Summary</h2>
         <p>
           
-          {(text.split(" ")[text.split(" ").length-1]==="") ?text.split(" ").length-1:text.split(" ").length} words and {text.length}
+          {(text.split(" ").filter((word)=>{return word.length!==0}).length)} words and {text.length}
          
         </p>
-        <p>{0.008 * ((text.split(" ")[text.split(" ").length-1]==="") ?text.split(" ").length-1:text.split(" ").length)} time take to read</p>
+        <p>{0.008 * (text.split(" ").filter((word)=>{return word.length!==0}).length)} time take to read</p>
         <h2>preview</h2>
         <p>{text}</p>
       </div>
